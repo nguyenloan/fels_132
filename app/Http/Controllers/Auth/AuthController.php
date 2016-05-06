@@ -7,9 +7,11 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+//use App\Public\LoadImage;
 
 class AuthController extends Controller
 {
+   //protected $fileUpload;
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -40,6 +42,12 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
+    // public function __construct(FileUploadProcessor $fileUpload)
+    // {
+    //     $this->fileUpload = $fileUpload;
+    // }
+
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -51,6 +59,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
+            //'avatar' => 'required|max:255',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -69,4 +78,16 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    // public function update(Request $request, $id)
+    // {
+    //     $input = Request::only('name','email','password');
+
+    //     if($request->hasFile('avatar')){
+    //         $uploadFile = $this->$fileUpload->upload($request->file('avatar'));
+    //         if($uploadFile){
+    //             $input['avatar'] =$uploadFile;
+    //         }
+    //     }
+    // }
 }
