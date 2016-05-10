@@ -11,9 +11,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    const ROLE_MEMBER = 1;
+    protected $fillable = ['name', 'email', 'password'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -39,5 +38,11 @@ class User extends Authenticatable
     public function activities()
     {
         return $this->hasMany(Activity::class);
+    }
+
+    public function getLinkReset($token)
+    {
+        $link = url('password/reset', $token) . '?email=' . urlencode($this->getEmailForPasswordReset());
+        return $link;
     }
 }
