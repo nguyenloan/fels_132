@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -20,13 +20,24 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+
     protected $hidden = [
         'password', 'remember_token',
     ];
 
     public function lesson()
     {
-
+        return $this->hasMany(Lesson::class);
     }
 
+    public function userWord()
+    {
+        return $this->hasMany(UserWord::class);
+    }
+
+    public function activity()
+    {
+        return $this->hasMany(Activity::class);
+    }
 }
