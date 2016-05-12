@@ -16,11 +16,12 @@ Route::get('/', function () {
 });
 
 Route::auth();
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
-Route::get('home', 'HomeController@index');
+Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('authen/getLogin', [
     'as' => 'getLogin',
     'uses' => 'Auth\AuthController@getLogin'
@@ -29,3 +30,5 @@ Route::post('authen/login', [
     'as' => 'postLogin',
     'uses' => 'Auth\AuthController@postLogin'
 ]);
+
+
