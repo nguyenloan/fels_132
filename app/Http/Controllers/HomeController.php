@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use Auth;
+use App\Models\Lesson;
+use App\Models\Category;
+use App\Models\UserWord;
 class HomeController extends Controller
 {
     /**
@@ -24,6 +28,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $countWordUserLearned = UserWord::count();
+        $resultOfUser = User::with(['lessons', 'lessons.category'])->where('id', Auth::user()->id)->get();
+        return view('home', ['resultOfUser' => $resultOfUser, 'countWordUserLearned' => $countWordUserLearned]);
     }
 }

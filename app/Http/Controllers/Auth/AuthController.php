@@ -84,7 +84,7 @@ class AuthController extends Controller
         ];
         $remember = $request->remember;
         if (Auth::attempt($auth, $remember)) {
-            return view('home');
+            return redirect()->route('home');
         } else {
             return redirect()->route('getLogin');
         }
