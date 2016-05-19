@@ -11,4 +11,11 @@ use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 class Controller extends BaseController
 {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
+    protected $user;
+
+    public function __construct()
+    {
+        $this->user = auth()->user();
+        view()->share('user', $this->user);
+    }
 }
