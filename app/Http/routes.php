@@ -30,5 +30,9 @@ Route::post('authen/login', [
     'as' => 'postLogin',
     'uses' => 'Auth\AuthController@postLogin'
 ]);
-
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
+    Route::resource('profiles', 'UserController', ['only' => ['show', 'edit', 'update']]);
+    Route::get('/profiles/getChangePass/{id}', ['as' => 'user.profiles.getChangePass', 'uses' => 'UserController@getChangePass']);
+    Route::post('/profiles/postChangePass/{id}', ['as' => 'user.profiles.postChangePass', 'uses' => 'UserController@postChangePass']);
+});
 

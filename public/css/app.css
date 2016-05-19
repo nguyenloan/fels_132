@@ -5,3 +5,9 @@ body {
 .fa-btn {
     margin-right: 6px;
 }
+.user-content {
+    border-left: 1px solid #eee;
+}
+.user-main {
+    padding-bottom: 120px;
+}
