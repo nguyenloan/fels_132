@@ -21,7 +21,7 @@
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-3 text-left">
-                                {!! Form::button('Words') !!}
+                                {{ link_to_action('WordController@index', $title = 'word', $parameters = [], $attributes = ['class' => 'btn btn-primary'])}}
                             </div>
                             <div class="col-md-3 text-right">
                                 {!! Form::button('Lesson') !!}

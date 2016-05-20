@@ -31,14 +31,17 @@ class User extends Authenticatable
 
     public function lessons()
     {
-        return $this-> hasMany(Lesson::class);
+        return $this->hasMany(Lesson::class);
     }
 
+    public function userWord()
+    {
+        return $this->belongsToMany(Word::class, 'user_words');
+    }
     public function userWords()
     {
         return $this->hasMany(UserWord::class);
     }
-
     public function activities()
     {
         return $this->hasMany(Activity::class);

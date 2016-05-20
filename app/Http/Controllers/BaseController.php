@@ -12,6 +12,6 @@ class BaseController extends Controller
 
     public function __construct()
     {
-       $this->currentUser = User::find(Auth::user()->id);
+        $this->currentUser = User::find(Auth::user()->id);
     }
 }
