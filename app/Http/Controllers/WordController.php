@@ -19,6 +19,7 @@ class WordController extends Controller
         $categoryId = $request->input('category');
         $statusRadio = $request->input('learn');
         $words = $word->getWord($categoryId, $statusRadio);
+
         return view('wordList', [
             'nameCategories' => $nameCategories,
             'words' => $words,

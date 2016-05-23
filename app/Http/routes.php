@@ -21,7 +21,7 @@ Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
-Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('home', ['middleware' => 'auth', 'as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('authen/getLogin', [
     'as' => 'getLogin',
     'uses' => 'Auth\AuthController@getLogin'
@@ -43,3 +43,6 @@ Route::get('word/', [
     'uses' => 'WordController@index'
 ]);
 
+Route::group(['prefix' => '/admin', 'middleware' => 'admin'], function() {
+    Route::resource('user', 'Admin\ManageUserController');
+});
