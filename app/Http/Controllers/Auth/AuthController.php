@@ -80,7 +80,6 @@ class AuthController extends Controller
         $auth = [
             'email' => $request->email,
             'password' => $request->password,
-            'role' => User::ROLE_MEMBER,
         ];
         $remember = $request->remember;
         if (Auth::attempt($auth, $remember)) {

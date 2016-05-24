@@ -54,7 +54,11 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $activities = $user->activities()->get();
-        return view('user.profile.show', ['user' => $user, 'activities' =>  $activities]);
+
+        return view('user.profile.show', [
+            'user' => $user,
+            'activities' => $activities
+        ]);
     }
 
     /**
@@ -66,6 +70,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
+
         return view('user.profile.edit', ['user' => $user]);
     }
 
@@ -80,6 +85,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->updateUser($request);
+
         return redirect('/home');
     }
 
@@ -97,6 +103,7 @@ class UserController extends Controller
     public function getChangePass($id)
     {
         $user = User::findOrFail($id);
+
         return view('user.profile.changePass', ['user' => $user]);
     }
 
@@ -105,8 +112,10 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         if (Hash::check($request->input('password'), $user->password)) {
             $user->updatePassword($request->input('new_password'));
+
             return redirect('/home');
         } else {
+
             return redirect()->route('user.profiles.getChangePass');
         }
     }

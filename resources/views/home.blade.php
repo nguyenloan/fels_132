@@ -9,11 +9,9 @@
                 <div class="panel-body">
                     <div class="col-md-4">
                     <div class="text-center">
-                        <img src="http://farm10.gox.vn/tinmoi/store/images/thumb/22072013/167/1422942/sao_bong_da_hoa_doi_quan_minion_de_thuong_17.jpg" class="img-circle" width="100" height="100">
+                        <img src="{{ url('uploads/image/' . $resultOfUser->avatar) }}" class="img-circle" width="100" height="100">
                         <br/>
-                        @foreach ($resultOfUser as $resultOfUser)
                             {{ $resultOfUser->name }}
-                        @endforeach
                         <br/>
                         Learned {{ $countWordUserLearned }} words
                     </div>
@@ -21,7 +19,7 @@
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-3 text-left">
-                                {{ link_to_action('WordController@index', $title = 'word', $parameters = [], $attributes = ['class' => 'btn btn-primary'])}}
+                                {!! link_to_action('WordController@index', 'word', [], ['class' => 'btn btn-primary']) !!}
                             </div>
                             <div class="col-md-3 text-right">
                                 {!! Form::button('Lesson') !!}

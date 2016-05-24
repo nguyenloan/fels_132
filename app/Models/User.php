@@ -16,6 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     const ROLE_MEMBER = 1;
+    const ROLE_ADMIN = 0;
     protected $fillable = ['name', 'email', 'avatar', 'password',];
 
     /**
@@ -83,5 +84,10 @@ class User extends Authenticatable
     {
         $this->password = Hash::make($password);
         $this->save();
+    }
+
+    public function isAdmin()
+    {
+        return ($this->role == User::ROLE_ADMIN);
     }
 }
