@@ -22,7 +22,7 @@
                                 {!! link_to_action('WordController@index', 'word', [], ['class' => 'btn btn-primary']) !!}
                             </div>
                             <div class="col-md-3 text-right">
-                                {!! Form::button('Lesson') !!}
+                                {!! link_to_action('CategoryController@index', 'Lesson', [], ['class' => 'btn btn-primary']) !!}
                             </div>
                         </div>
                         <div class="row">

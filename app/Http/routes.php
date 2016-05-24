@@ -35,8 +35,10 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
     Route::resource('profiles', 'UserController', ['only' => ['show', 'edit', 'update']]);
     Route::get('/profiles/getChangePass/{id}', ['as' => 'user.profiles.getChangePass', 'uses' => 'UserController@getChangePass']);
     Route::post('/profiles/postChangePass/{id}', ['as' => 'user.profiles.postChangePass', 'uses' => 'UserController@postChangePass']);
+    Route::resource('categories', 'CategoryController', ['only' => ['index']]);
+    Route::resource('lessonwords', 'LessonWordController', ['only' => ['index', 'store']]);
+    Route::resource('lessons', 'LessonController', ['only' => ['store', 'show']]);
 });
-
 Route::get('word/', [
     'middleware' => 'auth',
     'as' => 'wordList',

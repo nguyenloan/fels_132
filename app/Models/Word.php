@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\LessWord;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\UserWord;
 use Auth;
+use App\Models\WordAnswer;
+
 class Word extends Model
 {
     protected $fillable = [
@@ -16,9 +19,14 @@ class Word extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function wordAnswer()
+    public function wordAnswers()
     {
-        return $this->hasOne(WordAnswer::class);
+        return $this->hasMany(WordAnswer::class);
+    }
+
+    public function lessonWords()
+    {
+        return $this->hasMany(LessonWord::class);
     }
 
     public function userWord()
@@ -48,5 +56,11 @@ class Word extends Model
                 break;
         }
         return $listWord;
+    }
+
+    public function getQuestion($categoryId)
+    {
+        $wordAnswerData = $this->with('wordAnswers')->where('category_id', $categoryId)->get();
+        return $wordAnswerData;
     }
 }
