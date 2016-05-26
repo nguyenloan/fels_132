@@ -53,6 +53,15 @@
                         </table>
                     </div>
                 </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-5 text-left">
+                            {!! link_to_action('Admin\ManageWordController@index', 'word', [], ['class' => 'btn btn-primary']) !!}
+                        </div>
+                        <div class="col-md-5 text-right">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
