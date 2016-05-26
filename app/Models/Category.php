@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Word;
+use App\Models\Lesson;
 
 class Category extends Model
 {
@@ -9,7 +12,8 @@ class Category extends Model
         'name',
     ];
 
-    public function lessons(){
+    public function lessons()
+    {
         return $this->hasMany(Lesson::class);
     }
 

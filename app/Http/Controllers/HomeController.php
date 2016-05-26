@@ -9,6 +9,7 @@ use Auth;
 use App\Models\Lesson;
 use App\Models\Category;
 use App\Models\UserWord;
+
 class HomeController extends Controller
 {
     /**
