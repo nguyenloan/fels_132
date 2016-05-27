@@ -47,4 +47,5 @@ Route::get('word/', [
 
 Route::group(['prefix' => '/admin', 'middleware' => 'admin'], function() {
     Route::resource('user', 'Admin\ManageUserController');
+    Route::resource('word', 'Admin\ManageWordController');
 });
